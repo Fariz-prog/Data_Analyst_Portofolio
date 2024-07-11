@@ -1,5 +1,8 @@
+--Nomor 1
+--Q: Selama transaksi yang terjadi selama 2021, pada bulan apa total nilai transaksi
+--(after_discount) paling besar? Gunakan is_valid = 1 untuk memfilter data transaksi.
+
 --CTE
---pertanyaan nomor 1 (AMAN)
 WITH
 	complete_transaction as (
     SELECT
@@ -25,7 +28,10 @@ GROUP BY
 ORDER by 2 DESC227862744
 
 
---pertanyaan nomor 2 (AMAN)
+--Nomor 2
+--Q: Selama transaksi pada tahun 2022, kategori apa yang menghasilkan nilai transaksi paling
+--besar? Gunakan is_valid = 1 untuk memfilter data transaksi.
+	
 SELECT
 	category,
     round(SUM (after_discount)) transaction_total
@@ -41,7 +47,12 @@ GROUP BY
 ORDER by 2 DESC
 LIMIT 1
 
---pertanyaan nomor 3 (AMAN)
+--Nomor 3
+--Q: Bandingkan nilai transaksi dari masing-masing kategori pada tahun 2021 dengan 2022.
+--Sebutkan kategori apa saja yang mengalami peningkatan dan kategori apa yang mengalami
+--penurunan nilai transaksi dari tahun 2021 ke 2022. Gunakan is_valid = 1 untuk memfilter data
+--transaksi.
+	
 WITH tt AS (
 SELECT
 	sd.category,
@@ -73,7 +84,10 @@ FROM
 	tt
 order BY 4 DESC
 
---pertanyaan nomor 4 (AMAN)
+--Nomor 4
+--Q: Tampilkan top 5 metode pembayaran yang paling populer digunakan selama 2022
+--(berdasarkan total unique order). Gunakan is_valid = 1 untuk memfilter data transaksi.
+
 SELECT
 	payment_method,
     COUNT(DISTINCT od.id) Total_unique_order
@@ -89,7 +103,15 @@ GROUP BY
 ORDER by 2 DESC
 LIMIT 5
 
---Pertanyaan Nomor 5 (AMAN)
+--Nomor 5
+--Q: Urutkan dari ke-5 produk ini berdasarkan nilai transaksinya.
+--1. Samsung
+--2. Apple
+--3. Sony
+--4. Huawei
+--5. Lenovo
+--Gunakan is_valid = 1 untuk memfilter data transaksi.
+	
 WITH tt AS (    
     SELECT
         CASE
